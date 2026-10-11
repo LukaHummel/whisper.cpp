@@ -27,7 +27,7 @@ jobs:
       - name: Verify EGL library and server startup
         run: |
           docker run --rm --entrypoint /bin/sh whisper-vulkan:egl-test -ec '
-            test "$(dpkg-query -W -f="\$\{Status\}" libegl1)" = "install ok installed"
+            test "$(dpkg-query -W -f="\${Status}" libegl1)" = "install ok installed"
             ldconfig -p | grep -F "libEGL.so.1"
             whisper-server --help
           '
